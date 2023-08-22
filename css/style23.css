@@ -1,0 +1,45 @@
+h2{
+    background-color: rgb(69, 233, 233);
+    width: 300px;
+    
+}
+
+p{
+    background-color: yellow;
+    width: 200px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+
+
+#tarefa{
+    color: rgb(2, 27, 27);
+    
+}
+
+.exibir{
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    margin: auto;
+    
+}
+
+.divtarefa{
+    background-color: aquamarine;
+    display: flex;
+    margin: 2%;  
+    justify-content: space-evenly;
+    height: 30px;
+    padding: 2%;
+    border-radius: 25px;
+}
+
+.divtarefa h2,h3{
+
+    font-size: 15px;
+    width: 200px;
+    
+    
+}
