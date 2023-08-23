@@ -33,18 +33,20 @@ p{
 .divbotoes button{
     margin: 2%;
     padding: 2%;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
 
 }
 
 .divbotoes{
     margin: auto;
     width: 38%;
+    padding: 2%;
     
 }
 
 button{
-    border-radius: 25px;
+    
+    background-color: aliceblue;
 }
 
 input{

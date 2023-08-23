@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="../css/style23.css">
 <body>
 
+   <?php include_once "../php/criarteste.php";  ?>
+
     <ul id="Lista"></ul>
 
-    <form action="../php/criar.php" method="POST">
+    <form action="../php/criarteste.php" method="POST">
         
-        <input type="text" id="tarefa" name="tarefa" placeholder="adicione nova tarefa">
+        <input type="text" id="tarefa" name="tarefa" placeholder="adicione nova tarefa" required>
 
         <button type="submit">Adicionar tarefa</button>
     </form>

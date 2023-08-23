@@ -27,10 +27,19 @@ function getDataFromPHP(tag1 , tag2) {
             const button_excluir = document.createElement("button") // botão excluir
             button_excluir.innerHTML = "excluir";
 
+            button_excluir.addEventListener("click",()=>{ // função btn excluir
+
+              div.style.display = "none";
+
+            })
+
+
+
             const button_finalizar = document.createElement("button") // botão finalizar
             button_finalizar.innerHTML = "finalizar";
 
-            button_finalizar.addEventListener("click", ()=>{
+            button_finalizar.addEventListener("click", ()=>{ // função btn finalizar
+              
               div.style.display = "none";
             })
           
@@ -54,7 +63,7 @@ function getDataFromPHP(tag1 , tag2) {
       .catch(error => console.error('Erro ao obter os dados:', error));
   }
   
-  
+
   // Chama a função para obter os dados do PHP assim que a página carrega
   getDataFromPHP("h2","p");
   
