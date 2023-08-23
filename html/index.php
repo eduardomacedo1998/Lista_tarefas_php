@@ -10,7 +10,7 @@
     <ul id="Lista"></ul>
 
     <form action="../php/criar.php" method="POST">
-        <label for="tarefa">Tarefa</label>
+        
         <input type="text" id="tarefa" name="tarefa" placeholder="adicione nova tarefa">
 
         <button type="submit">Adicionar tarefa</button>
