@@ -1,4 +1,4 @@
-function getDataFromPHP(tag1 , tag2) {
+function getDataFromPHP(tag1 , tag2) {//função principal com rederização de elementos e chamada de funções externas
     fetch('../select.php')
       .then(response => response.json())
       .then(data => {
@@ -27,20 +27,18 @@ function getDataFromPHP(tag1 , tag2) {
             const button_excluir = document.createElement("button") // botão excluir
             button_excluir.innerHTML = "excluir";
 
-            button_excluir.addEventListener("click",()=>{ // função btn excluir
-
-              div.style.display = "none";
-
-            })
-
-
+            logica_excluir(button_excluir,item.id)
 
             const button_finalizar = document.createElement("button") // botão finalizar
             button_finalizar.innerHTML = "finalizar";
 
+            logica_finalizar(button_finalizar,div)
+
             button_finalizar.addEventListener("click", ()=>{ // função btn finalizar
+
+              div.style.backgroundColor = "green"
+
               
-              div.style.display = "none";
             })
           
           
@@ -63,6 +61,25 @@ function getDataFromPHP(tag1 , tag2) {
       .catch(error => console.error('Erro ao obter os dados:', error));
   }
   
+function logica_excluir(button_excluir,id){ // função btn excluir, toda loja excluir encaposulada aqui
+
+  button_excluir.addEventListener("click",()=>{ 
+
+    alert(id)
+
+
+  })}
+
+
+function logica_finalizar(button_finalizar,div){ // função btn finalizar, toda logica encaposulada aqui
+
+    button_finalizar.addEventListener("click",()=>{ 
+  
+      div.style.backgroundColor = "green"
+  
+  
+    })}
+
 
   // Chama a função para obter os dados do PHP assim que a página carrega
   getDataFromPHP("h2","p");

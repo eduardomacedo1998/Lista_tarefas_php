@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/style23.css">
+    <link rel="stylesheet" href="../css/style27.css">
 <body>
 
    <?php include_once "../php/criarteste.php";  ?>
