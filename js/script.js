@@ -1,5 +1,5 @@
 function getDataFromPHP(tag1 , tag2) {//função principal com rederização de elementos e chamada de funções externas
-    fetch('../select.php')
+    fetch('../php/select.php')
       .then(response => response.json())
       .then(data => {
         
@@ -65,8 +65,26 @@ function logica_excluir(button_excluir,id){ // função btn excluir, toda loja e
 
   button_excluir.addEventListener("click",()=>{ 
 
-    alert(id)
+    const dados = {
+         id : id
+    };
 
+    $.ajax({
+      url: '../php/delet.php', // Substitua pelo nome do arquivo PHP que irá receber os dados
+      type: 'POST', // Ou 'GET' se preferir uma solicitação GET
+      data: dados, // Os dados a serem enviados para o servidor
+      dataType: 'json',
+      success: function(data) {
+          // Manipule a resposta JSON recebida do servidor aqui.
+          console.log('Resposta do servidor:', data);
+
+      },
+      error: function(xhr, status, error) {
+          console.log('Erro na requisição AJAX:', error);
+      }
+  });
+  
+  location.reload();
 
   })}
 

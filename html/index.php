@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/style27.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <body>
 
    <?php include_once "../php/criarteste.php";  ?>
@@ -19,6 +21,8 @@
     </form>
 
     <div id="ul"></div>
+
+    <?php include_once "../php/delet.php"; ?>
     
 
     

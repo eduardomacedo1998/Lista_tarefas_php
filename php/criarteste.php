@@ -1,6 +1,6 @@
 <?php
 
-include_once "../classe.php";
+include_once "../php/classe.php";
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
