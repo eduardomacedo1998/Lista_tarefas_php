@@ -1,26 +1,15 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "banco_dados";
+include_once "../php/classe.php";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$selectdados = new Database("localhost", "root", "", "banco_dados");
 
 
-$sql = "SELECT * FROM lista";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0){
 
 
-    $data = array();
-    while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
-    }
-    echo json_encode($data);
-     
-}else{
+$dados= $selectdados->select("lista");
+
+echo json_encode($dados);
 
 
-}
+ 

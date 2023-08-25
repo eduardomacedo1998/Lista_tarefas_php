@@ -9,7 +9,7 @@
 
 <body>
 
-   <?php include_once "../php/criarteste.php";  ?>
+
 
     <ul id="Lista"></ul>
 
@@ -26,6 +26,6 @@
     
 
     
-<script src="../js/script.js"></script>
+<script src="../js/scriptawe.js"></script>
 </body>
 </html>

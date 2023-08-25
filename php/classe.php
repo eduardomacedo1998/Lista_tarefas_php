@@ -13,51 +13,63 @@ class Database {
         $this->password = $password;
         $this->dbname = $dbname;
 
-        try {
-            $this->conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            echo "Erro na conexão: " . $e->getMessage();
+        $this->conn = new mysqli($this->host, $this->username, $this->password, $this->dbname);
+
+        if ($this->conn->connect_error) {
+            die("Connection failed: " . $this->conn->connect_error);
         }
     }
 
-    public function select($table) {
-        $sql = "SELECT * FROM $table";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-        if ($result) {
-            echo json_encode($result);
-            return $result;
-        }
-        
-        return array(); // Retorna um array vazio se não houver resultados
-    }
+    public function select($table) {  // função para select
+        $query = "SELECT * FROM $table";
+        $result = $this->conn->query($query);
+        $rows = array();
 
-    public function insert($table, $data) {
-        $keys = implode(', ', array_keys($data));
-        $values = ':' . implode(', :', array_keys($data));
-        $stmt = $this->conn->prepare("INSERT INTO $table ($keys) VALUES ($values)");
-        
-        foreach ($data as $key => $value) {
-            $stmt->bindValue(":$key", $value);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $rows[] = $row;
+            }
         }
 
-        return $stmt->execute();
+        return ( $rows);
+    }
+
+    public function insert($table, $data) {   // função para inserir dados
+        $keys = implode(", ", array_keys($data));
+        $values = "'" . implode("', '", $data) . "'";
+        $query = "INSERT INTO $table ($keys) VALUES ($values)";
+        
+        if ($this->conn->query($query) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function delete($table, $id) { // função de update
+        $query = "DELETE FROM $table WHERE id = $id";
+        
+        if ($this->conn->query($query) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
-    public function delete ($id,$tabela){
+    public function updateVerificationStatus($table, $userId, $newVerificationStatus) {
+        $query = "UPDATE $table SET verificacao = '$newVerificationStatus' WHERE id = $userId";
+        
+        if ($this->conn->query($query) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-        $sql = "DELETE FROM $tabela where id = $id";
-
-        $result = $this->conn->prepare($sql);
-
-        return $result->execute();
-
-
+    public function __destruct() {
+        $this->conn->close();
     }
 }
 
-    
+

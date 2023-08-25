@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         $novo = new Database("localhost","root","","banco_dados");
 
-        $insertresult = $novo->delete($id,"lista");
+        $insertresult = $novo->delete("lista",$id);
 
     }
     
